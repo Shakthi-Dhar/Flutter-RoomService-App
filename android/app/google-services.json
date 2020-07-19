@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "121685464816",
+    "firebase_url": "https://rate-and-review-fcb40.firebaseio.com",
+    "project_id": "rate-and-review-fcb40",
+    "storage_bucket": "rate-and-review-fcb40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121685464816:android:2b5e7eac54b8e1a19c9435",
+        "android_client_info": {
+          "package_name": "com.example.rateandreview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121685464816-mj9t8be6oor8b5rkshi8u0hqpuvlc4lp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi5gIAWmioSgRoeEGbUJX4wLoBsB-Z0y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121685464816-mj9t8be6oor8b5rkshi8u0hqpuvlc4lp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
