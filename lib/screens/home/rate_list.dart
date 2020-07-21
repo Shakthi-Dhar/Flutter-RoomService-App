@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rateandreview/models/rate.dart';
 import 'package:provider/provider.dart';
+import 'package:rateandreview/screens/home/rate_tile.dart';
 
 class rateList extends StatefulWidget {
   @override
@@ -10,11 +11,18 @@ class rateList extends StatefulWidget {
 class _rateListState extends State<rateList> {
   @override
   Widget build(BuildContext context) {
-    final rate = Provider.of<QuerySnapshot>(context);
+    final rate = Provider.of<List<Rate>>(context);
 //    print(rate.documents);
-    for(var doc in rate.documents){
-      print(doc.data);
-    }
-    return Container();
+    rate.forEach((rate) {
+      print(rate.name);
+      print(rate.num_rooms);
+      print(rate.sqfeet);
+    });
+    return ListView.builder(
+      itemCount: rate.length,
+      itemBuilder:(context,index){
+        return rateTile(rate :rate[index] );
+      }
+    );
   }
 }

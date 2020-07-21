@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rateandreview/services/auth.dart';
 import 'package:rateandreview/shared/loading.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -24,6 +25,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return loading ? Loading(): Container(
+      margin: const EdgeInsets.only(top:1,),
       decoration:new BoxDecoration(
           image:  new DecorationImage(
             image: new AssetImage("images/city.jpg"),
@@ -31,14 +33,41 @@ class _RegisterState extends State<Register> {
       ),
 
       child: Scaffold(
-        backgroundColor: Colors.black.withOpacity(0.85),
+        backgroundColor: Colors.black.withOpacity(0.9),
 
         appBar: AppBar(
+          centerTitle: true,
           title:
-          Align(alignment:Alignment.center, child: Text("Rate & Review")),
+          Text("Rate & Review", style: TextStyle(color: Colors.white, fontSize: 25,),),
 
+          backgroundColor: Colors.white12,
+        ),
+
+        bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.transparent,
+          buttonBackgroundColor: Colors.white24,
+          color: Colors.white12,
+          height: 60,
+          index: 1,
+          animationDuration: Duration(seconds: 1),
+          items: <Widget>[
+            Icon(Icons.person, color:Colors.white,size: 30, ),
+            Icon(Icons.person_add,color: Colors.white, size: 30),
+          ],
 
+          onTap: (index) {
+            //Handle button tap
+            if(index == 0){
+              Future.delayed(Duration(milliseconds: 980), () {
+                setState(() {
+                  widget.toggleView();
+                });
+
+              });
+//              widget.toggleView();
+
+            }
+          },
         ),
 
         body:
@@ -56,32 +85,28 @@ class _RegisterState extends State<Register> {
               child:
 
               Container(
-                child: Center(
-                  child: Text('Create Account',
-                    style: TextStyle(color: Colors.white, fontSize: 25,
-                      decoration: TextDecoration.underline,decorationStyle: TextDecorationStyle.solid,),
-                  ),
-                ),
+            child: Center(
+            child: Text('Register',
+              style: TextStyle(color: Colors.white, fontSize: 35,
               ),
+            ),
+      ),
+    ),
 
             ),
 
             SizedBox(
-              height: 10,
+              height: 5,
             ),
 
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(5.0),
               child: Form(
 
                 key: _formKey,
 
                 child:  Column(
                   children: <Widget>[
-
-                    SizedBox(
-                      height: 10,
-                    ),
 
                     Container(
                       color: Colors.transparent,
@@ -145,7 +170,7 @@ class _RegisterState extends State<Register> {
                             borderRadius: BorderRadius.all(Radius.circular(40.0)),
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                            icon: Icon(Icons.vpn_key, color: Colors.white,size: 40,),
+                            icon: Icon(Icons.lock, color: Colors.white,size: 40,),
                             hintText: 'Password',
                             hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
                           errorStyle: TextStyle(
@@ -165,6 +190,7 @@ class _RegisterState extends State<Register> {
                     SizedBox(
                       height: 10,
                     ),
+
 
 
 
@@ -215,21 +241,7 @@ class _RegisterState extends State<Register> {
                         ),
                       ],
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: RaisedButton.icon(
-                        color: Colors.transparent,
 
-                        icon: Icon(Icons.arrow_back, color: Colors.red,size: 15,),
-                        label: Text('Sign In',
-                          style: TextStyle(color: Colors.redAccent, fontSize: 12,
-                            decoration: TextDecoration.underline,decorationStyle: TextDecorationStyle.solid,),
-                        ),
-                        onPressed: () async{
-                          widget.toggleView();
-                        },
-                      ),
-                    ),
                   ],
                 ),
               ),

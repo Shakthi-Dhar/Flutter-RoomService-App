@@ -32,7 +32,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
      return loading ? Loading(): Container(
-       margin: const EdgeInsets.only(top:25,),
+       margin: const EdgeInsets.only(top:1,),
 
       decoration:new BoxDecoration(
           image:  new DecorationImage(
@@ -42,22 +42,19 @@ class _SignInState extends State<SignIn> {
 
 
       child: Scaffold(
-        backgroundColor: Colors.black.withOpacity(0.85),
+        backgroundColor: Colors.black.withOpacity(0.9),
 
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(20.0),
-          child: AppBar(
-            centerTitle: true,
-            title:
-            Text("Rate & Review", style: TextStyle(color: Colors.white, fontSize: 25,),),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(100),
-                top:  Radius.circular(100),
-              ),
-            ),
-            backgroundColor: Colors.white12,
-          ),
+        appBar: AppBar(
+          centerTitle: true,
+          title:
+          Text("Rate & Review", style: TextStyle(color: Colors.white, fontSize: 25,),),
+//          shape: RoundedRectangleBorder(
+//            borderRadius: BorderRadius.vertical(
+//              bottom: Radius.circular(100),
+//              top:  Radius.circular(100),
+//            ),
+//          ),
+          backgroundColor: Colors.white12,
         ),
 
         bottomNavigationBar: CurvedNavigationBar(
@@ -65,6 +62,8 @@ class _SignInState extends State<SignIn> {
           buttonBackgroundColor: Colors.white24,
           color: Colors.white12,
           height: 60,
+          index: 0,
+          animationDuration: Duration(seconds: 1),
           items: <Widget>[
             Icon(Icons.person, color:Colors.white,size: 30, ),
             Icon(Icons.person_add,color: Colors.white, size: 30),
@@ -72,7 +71,16 @@ class _SignInState extends State<SignIn> {
 
           onTap: (index) {
             //Handle button tap
-            print('$index');
+            if(index == 1){
+              Future.delayed(Duration(milliseconds: 980), () {
+                setState(() {
+                  widget.toggleView();
+                });
+
+              });
+//              widget.toggleView();
+
+            }
           },
         ),
 
@@ -193,7 +201,7 @@ class _SignInState extends State<SignIn> {
                       ),
 
                       SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
 
                       Row(
@@ -241,21 +249,6 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ],
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: RaisedButton.icon(
-                          color: Colors.transparent,
-
-                          icon: Icon(Icons.person_add, color: Colors.red,size: 15,),
-                          label: Text('New user',
-                            style: TextStyle(color: Colors.redAccent, fontSize: 12,
-                              decoration: TextDecoration.underline,decorationStyle: TextDecorationStyle.solid,),
-                          ),
-                          onPressed: () async{
-                            widget.toggleView();
-                          },
-                        ),
                       ),
 
                     ],
