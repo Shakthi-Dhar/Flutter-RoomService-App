@@ -47,13 +47,7 @@ class _SignInState extends State<SignIn> {
         appBar: AppBar(
           centerTitle: true,
           title:
-          Text("Rate & Review", style: TextStyle(color: Colors.white, fontSize: 25,),),
-//          shape: RoundedRectangleBorder(
-//            borderRadius: BorderRadius.vertical(
-//              bottom: Radius.circular(100),
-//              top:  Radius.circular(100),
-//            ),
-//          ),
+          Text("Room Service", style: TextStyle(color: Colors.white, fontSize: 25,),),
           backgroundColor: Colors.white12,
         ),
 

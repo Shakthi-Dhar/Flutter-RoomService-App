@@ -38,7 +38,7 @@ class _RegisterState extends State<Register> {
         appBar: AppBar(
           centerTitle: true,
           title:
-          Text("Rate & Review", style: TextStyle(color: Colors.white, fontSize: 25,),),
+          Text("Room Service", style: TextStyle(color: Colors.white, fontSize: 25,),),
 
           backgroundColor: Colors.white12,
         ),

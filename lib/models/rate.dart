@@ -1,8 +1,8 @@
 class Rate{
   final String name;
-  final int num_rooms;
-  final int sqfeet;
+  final String time;
+  final int room;
 
-  Rate({this.name, this.num_rooms, this.sqfeet});
+  Rate({this.name, this.time, this.room});
 
 }

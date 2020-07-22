@@ -11,12 +11,12 @@ class rateList extends StatefulWidget {
 class _rateListState extends State<rateList> {
   @override
   Widget build(BuildContext context) {
-    final rate = Provider.of<List<Rate>>(context);
+    final rate = Provider.of<List<Rate>>(context) ?? [];
 //    print(rate.documents);
     rate.forEach((rate) {
       print(rate.name);
-      print(rate.num_rooms);
-      print(rate.sqfeet);
+      print(rate.time);
+      print(rate.room);
     });
     return ListView.builder(
       itemCount: rate.length,
