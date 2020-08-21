@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rateandreview/models/user.dart';
-import 'package:rateandreview/services/database.dart';
+import 'package:rateandreview/services/profile_set.dart';
 import 'package:provider/provider.dart';
 import 'package:rateandreview/shared/loading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -16,23 +16,26 @@ class _SettingsFormState extends State<SettingsForm> {
   final List<String> time = ['Morning [9am to 12pm]','Afternoon [12pm to 4pm]','Evening [4pm to 7pm]','Night [7pm to 10pm]'];
 
   String _currentName = 'Name';
-//  String _currenttime = 'Time';
+  String _currenttime = 'Time';
   int _currentroom = 0;
   bool loading = false;
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+
     return loading ? SpinKitCircle(
       color: Colors.black.withOpacity(0.6),
       size: 100,
     ): StreamBuilder<UserData>(
+
       stream: DatabaseService(uid: user.uid).userData,
       
       builder: (context, snapshot) {
 //
 //        if(snapshot.hasData){
           UserData userData = snapshot.data;
+//          String _currenttime = userData.time;
           return Form(
             key: _formKey,
             child: Column(
@@ -51,15 +54,15 @@ class _SettingsFormState extends State<SettingsForm> {
                     border: InputBorder.none,
                     fillColor: Colors.black,
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black),
                     ),
                     icon: Icon(Icons.person, color: Colors.black,size: 30,),
-                    hintText: 'Enter Name',
+                    hintText: 'Enter your Name here',
                     hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
 
                     errorStyle: TextStyle(
@@ -118,15 +121,15 @@ class _SettingsFormState extends State<SettingsForm> {
                     border: InputBorder.none,
                     fillColor: Colors.black,
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black),
                     ),
                     icon: Icon(Icons.home, color: Colors.black,size: 30,),
-                    hintText: 'Enter Room Number',
+                    hintText: 'Enter your Room Number             ',
                     hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
 
                     errorStyle: TextStyle(
@@ -148,7 +151,7 @@ class _SettingsFormState extends State<SettingsForm> {
                     color: Colors.black,
 
                     child: Text(
-                      'Done',
+                      'Update',
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     onPressed: ()async{
@@ -159,7 +162,8 @@ class _SettingsFormState extends State<SettingsForm> {
                         await DatabaseService(uid:  user.uid).updateUserData(
                            _currentroom ?? userData.room,
                            _currentName ?? userData.name,
-                           "Nil" ?? userData.time,
+//                           _currenttime ?? userData.time,
+
                            );
                       }
 

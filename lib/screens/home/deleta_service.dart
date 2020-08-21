@@ -13,9 +13,11 @@ class delete_service extends StatefulWidget {
 class _delete_serviceState extends State<delete_service> {
 
   final _formKey = GlobalKey<FormState>();
-  final List<String> time = ['Morning [9am to 12pm]','Afternoon [12pm to 4pm]','Evening [4pm to 7pm]','Night [7pm to 10pm]'];
+  final List<String> time = ['Morning [9am to 12pm]','Afternoon [12pm to 4pm]','Evening [4pm to 7pm]','Night [7pm to 10pm]','Ticket Closed'];
 
   String _currenttime = 'Time';
+
+
   bool loading = false;
 
   @override
@@ -31,6 +33,8 @@ class _delete_serviceState extends State<delete_service> {
 //
 //        if(snapshot.hasData){
           UserData userData = snapshot.data;
+//          String _currentname = userData.name;
+//          String _currentroom = userData.room;
           return Form(
             key: _formKey,
             child: Column(
@@ -45,15 +49,15 @@ class _delete_serviceState extends State<delete_service> {
                     border: InputBorder.none,
                     fillColor: Colors.black,
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black),
                     ),
-                    icon: Icon(Icons.access_time, color: Colors.black,size: 40,),
-                    hintText: 'Choose Timing from Dropdown',
+                    icon: Icon(Icons.access_time, color: Colors.black,size: 30,),
+                    hintText: 'Choose Timing     ',
                     hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
 
                     errorStyle: TextStyle(
@@ -73,9 +77,8 @@ class _delete_serviceState extends State<delete_service> {
 
                 ),
 
+
                 SizedBox(height: 10,),
-
-
                 Align(
                   alignment: Alignment.centerRight,
                   child:
@@ -86,15 +89,20 @@ class _delete_serviceState extends State<delete_service> {
                     color: Colors.black,
 
                     child: Text(
-                      'Update',
+                      'Done',
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     onPressed: ()async{
                       Navigator.pop(context);
+
                       setState(() => loading =true);
                       if(_formKey.currentState.validate()){
+
                         await DatabaseService(uid:  user.uid).updateUserData(
-                            _currenttime ?? userData.time);
+//                            _currentroom ?? userData.room,
+//                            _currentname ?? userData.name,
+                            _currenttime ?? userData.time,
+                        );
                       }
 
                       setState(() => loading =false);
@@ -109,7 +117,7 @@ class _delete_serviceState extends State<delete_service> {
           );
 
 //        }
-
+//
 //        else{
 //          return Form(
 //            child: Text("error"),

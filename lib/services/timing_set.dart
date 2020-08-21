@@ -1,5 +1,3 @@
-//import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rateandreview/models/rate.dart';
 import 'package:rateandreview/models/user.dart';
@@ -7,6 +5,8 @@ import 'package:rateandreview/models/user.dart';
 class DatabaseService{
 
   final String uid;
+  String curr_name;
+  int curr_room;
   DatabaseService({this.uid});
 
   //collection reference
@@ -14,7 +14,6 @@ class DatabaseService{
 
   Future updateUserData(String time) async{
     return await rateCollection.document(uid).setData({
-
       'Time':time,
     });
   }
@@ -23,9 +22,7 @@ class DatabaseService{
   List<Rate> _rateListFromSnapshot(QuerySnapshot snapshot){
     return snapshot.documents.map((doc){
       return Rate(
-          name: doc.data['Name'] ?? 'New Member',
-          time: doc.data['Time'] ?? 'Morning [9am to 12pm]',
-          room: doc.data['Room']?? 0
+          time: doc.data['Time'] ?? 'Nil',
       );
     }).toList();
   }

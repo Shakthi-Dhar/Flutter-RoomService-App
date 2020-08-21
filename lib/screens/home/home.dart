@@ -69,24 +69,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-//    void _showSettingsPanel(){
-//
-//      showModalBottomSheet(context: context, builder: (context){
-//        return GestureDetector(
-////          onTap: () => Navigator.pop(context),
-//          child: Container(
-//            padding: EdgeInsets.symmetric(vertical: 30,horizontal: 20),
-//            child: SettingsForm(),
-//          ),
-//        );
-//      }
-//      );
-//    }
+
     void _showSettingsPanel(BuildContext context){
       Alert(
         context: context,
 
-        type: AlertType.info,
+//        type: AlertType.info,
         title: "Update Profile",
         content: SettingsForm(),
 
@@ -99,7 +87,7 @@ class Home extends StatelessWidget {
       Alert(
         context: context,
 
-        type: AlertType.error,
+//        type: AlertType.error,
         title: "Raise/ Close Ticket" ,
 
         content: delete_service(),
@@ -108,56 +96,6 @@ class Home extends StatelessWidget {
       ).show();
     }
 
-//    void _deleteService(){
-////      createAlertPopUp(BuildContext context){
-//        // ignore: missing_return
-////        return
-//          showDialog(context: context, builder:(context){
-//          return AlertDialog(
-//            title: Text("Do you want to close the service ticket ?",style: TextStyle(fontSize: 15, color: Colors.black,fontWeight: FontWeight.bold),),
-//            content:
-//
-//            Row(
-//              mainAxisAlignment:MainAxisAlignment.spaceAround ,
-//              children: <Widget>[
-//
-//                RaisedButton(
-//                  shape: RoundedRectangleBorder(
-//                    borderRadius: BorderRadius.circular(30.0),
-//                  ),
-//                  color: Colors.black12,
-//
-//                  child: Text(
-//                    'No',
-//                    style: TextStyle(color: Colors.white, fontSize: 12),
-//                  ),
-//                  onPressed: ()async{
-//                    Navigator.pop(context);
-//                  },
-//                ),
-//
-//                RaisedButton(
-//                  shape: RoundedRectangleBorder(
-//                    borderRadius: BorderRadius.circular(30.0),
-//                  ),
-//                  color: Colors.redAccent,
-//
-//                  child: Text(
-//                    'Yes',
-//                    style: TextStyle(color: Colors.white, fontSize: 14),
-//                  ),
-//                  onPressed: ()async{
-//                    Navigator.pop(context);
-//                  },
-//                ),
-//
-//              ],
-//            ),
-//          );
-//        },
-//        );
-////      }
-//    }
 
     return StreamProvider<List<Rate>>.value(
       value: DatabaseService().rate,
@@ -202,23 +140,22 @@ class Home extends StatelessWidget {
 
             children:[
               SpeedDialChild(
-                child: Icon(Icons.add_circle),
+                  child: Icon(Icons.av_timer),
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.black,
-                label: "Request Service",
-                labelStyle: TextStyle(fontSize: 18),
-                onTap: ()=> _showSettingsPanel(context),
-              ),
-
-              SpeedDialChild(
-                  child: Icon(Icons.delete_sweep),
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
-                  label: "Remove Request",
+                  label: "Ticket Status",
                   labelBackgroundColor: Colors.white,
                   labelStyle: TextStyle(fontSize: 18),
                   onTap: ()=> _deleteService(context),
-              )
+              ),
+              SpeedDialChild(
+                child: Icon(Icons.account_box),
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black,
+                label: "Profile update",
+                labelStyle: TextStyle(fontSize: 18),
+                onTap: ()=> _showSettingsPanel(context),
+              ),
             ],
           ),
 
