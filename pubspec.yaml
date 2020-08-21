@@ -37,6 +37,9 @@ dev_dependencies:
   provider: ^3.1.0
   flutter_spinkit: "^4.1.2"
   curved_navigation_bar: ^0.3.3
+  flutter_speed_dial: ^1.2.1
+  rflutter_alert: ^1.0.2
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
