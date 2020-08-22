@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rateandreview/models/user.dart';
+
 import 'package:rateandreview/services/profile_set.dart';
 //import 'package:rateandreview/services/database.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +38,9 @@ class _SettingsFormState extends State<SettingsForm> {
       builder: (context, snapshot) {
 
 //        if(snapshot.hasData){
+
+      //TODO The userdata is returning NULL values
+
           UserData userData = snapshot.data;
 //          String _currenttime = snapshot.data.time;
           print(userData);
@@ -163,6 +167,9 @@ class _SettingsFormState extends State<SettingsForm> {
 //                      setState(() => loading =true);
 
                       if(_formKey.currentState.validate()){
+
+                        //TODO updating the userdata by calling the updateUserData function from the profile_set.dart file
+
                         await DatabaseService(uid:  user.uid).updateUserData(
                            _currentroom ?? snapshot.data.room,
                            _currentName ?? snapshot.data.name,

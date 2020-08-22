@@ -33,7 +33,10 @@ class _delete_serviceState extends State<delete_service> {
         builder: (context, snapshot) {
 //
 //        if(snapshot.hasData){
+
+//TODO A similar situation like settings_form.dart, but here only updating the time
           UserData userData = snapshot.data;
+          print(userData);
 //          String _currentname = userData.name;
 //          String _currentroom = userData.room;
           print(userData);
@@ -99,6 +102,7 @@ class _delete_serviceState extends State<delete_service> {
 
                       setState(() => loading =true);
                       if(_formKey.currentState.validate()){
+//TODO calling the updateUserData function from timing_set.dart
 
                         await DatabaseService(uid:  user.uid).updateUserData(
 //                            int.parse(_currentroom) ?? userData.room,
