@@ -39,7 +39,7 @@ class _SettingsFormState extends State<SettingsForm> {
 
 //        if(snapshot.hasData){
 
-      //TODO The userdata is returning NULL values
+      //TODO: The userdata is returning NULL values
 
           UserData userData = snapshot.data;
 //          String _currenttime = snapshot.data.time;
@@ -168,7 +168,7 @@ class _SettingsFormState extends State<SettingsForm> {
 
                       if(_formKey.currentState.validate()){
 
-                        //TODO updating the userdata by calling the updateUserData function from the profile_set.dart file
+                        //TODO: updating the userdata by calling the updateUserData function from the profile_set.dart file
 
                         await DatabaseService(uid:  user.uid).updateUserData(
                            _currentroom ?? snapshot.data.room,
