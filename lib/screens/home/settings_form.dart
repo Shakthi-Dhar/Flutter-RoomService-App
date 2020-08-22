@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rateandreview/models/user.dart';
 import 'package:rateandreview/services/profile_set.dart';
+//import 'package:rateandreview/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:rateandreview/shared/loading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -16,26 +17,29 @@ class _SettingsFormState extends State<SettingsForm> {
   final List<String> time = ['Morning [9am to 12pm]','Afternoon [12pm to 4pm]','Evening [4pm to 7pm]','Night [7pm to 10pm]'];
 
   String _currentName = 'Name';
-  String _currenttime = 'Time';
+//  String _currenttime ;
   int _currentroom = 0;
   bool loading = false;
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    User user = Provider.of<User>(context);
 
-    return loading ? SpinKitCircle(
-      color: Colors.black.withOpacity(0.6),
-      size: 100,
-    ): StreamBuilder<UserData>(
+    return
+//      loading ? SpinKitCircle(
+//      color: Colors.black.withOpacity(0.6),
+//      size: 100,
+//    ):
+      StreamBuilder<UserData>(
 
       stream: DatabaseService(uid: user.uid).userData,
       
       builder: (context, snapshot) {
-//
+
 //        if(snapshot.hasData){
           UserData userData = snapshot.data;
-//          String _currenttime = userData.time;
+//          String _currenttime = snapshot.data.time;
+          print(userData);
           return Form(
             key: _formKey,
             child: Column(
@@ -108,7 +112,7 @@ class _SettingsFormState extends State<SettingsForm> {
 //                  onChanged: (val) => setState(()=>_currenttime=val),
 //
 //                ),
-//
+
 //                SizedBox(height: 10,),
 
                 TextFormField(
@@ -156,30 +160,27 @@ class _SettingsFormState extends State<SettingsForm> {
                     ),
                     onPressed: ()async{
                       Navigator.pop(context);
-                      setState(() => loading =true);
+//                      setState(() => loading =true);
 
                       if(_formKey.currentState.validate()){
                         await DatabaseService(uid:  user.uid).updateUserData(
-                           _currentroom ?? userData.room,
-                           _currentName ?? userData.name,
-//                           _currenttime ?? userData.time,
+                           _currentroom ?? snapshot.data.room,
+                           _currentName ?? snapshot.data.name,
+//                           _currenttime?? snapshot.data.time,
 
                            );
                       }
 
-                      setState(() => loading =false);
+//                      setState(() => loading =false);
                     },
                   ),
-
-
                 ),
-
               ],
             ),
           );
 
 //        }
-
+//
 //        else{
 //          return Form(
 //            child: Text("error"),

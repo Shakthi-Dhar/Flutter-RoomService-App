@@ -13,16 +13,22 @@ class DatabaseService{
   final CollectionReference rateCollection = Firestore.instance.collection('rating');
 
   Future updateUserData(String time) async{
-    return await rateCollection.document(uid).setData({
+    return await rateCollection.document(uid).updateData({
       'Time':time,
+//      'Name': curr_name,
+//      'Room': curr_room,
     });
   }
 
   //rate list from snapshot
   List<Rate> _rateListFromSnapshot(QuerySnapshot snapshot){
     return snapshot.documents.map((doc){
+      curr_name = doc.data['Name'];
+      curr_room = doc.data['Room'];
       return Rate(
-          time: doc.data['Time'] ?? 'Nil',
+          time: doc.data['Time'] ?? 'Ticket Cancelled',
+          name: doc.data['Name'] ?? 'New Member',
+          room: doc.data['Room'] ?? 0,
       );
     }).toList();
   }

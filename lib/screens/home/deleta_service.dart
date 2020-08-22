@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rateandreview/models/user.dart';
 import 'package:rateandreview/services/timing_set.dart';
+//import 'package:rateandreview/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:rateandreview/shared/loading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -35,6 +36,7 @@ class _delete_serviceState extends State<delete_service> {
           UserData userData = snapshot.data;
 //          String _currentname = userData.name;
 //          String _currentroom = userData.room;
+          print(userData);
           return Form(
             key: _formKey,
             child: Column(
@@ -99,7 +101,7 @@ class _delete_serviceState extends State<delete_service> {
                       if(_formKey.currentState.validate()){
 
                         await DatabaseService(uid:  user.uid).updateUserData(
-//                            _currentroom ?? userData.room,
+//                            int.parse(_currentroom) ?? userData.room,
 //                            _currentname ?? userData.name,
                             _currenttime ?? userData.time,
                         );

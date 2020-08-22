@@ -16,53 +16,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Home extends StatelessWidget {
 
-//  createAlertPopUp(BuildContext context){
-//    // ignore: missing_return
-//    return showDialog(context: context, builder:(context){
-//    return AlertDialog(
-//      title: Text("Do you want to close the service ticket ?",style: TextStyle(fontSize: 15, color: Colors.black,fontWeight: FontWeight.bold),),
-//      content:
-//
-//      Row(
-//        mainAxisAlignment:MainAxisAlignment.spaceAround ,
-//        children: <Widget>[
-//
-//          RaisedButton(
-//            shape: RoundedRectangleBorder(
-//              borderRadius: BorderRadius.circular(30.0),
-//            ),
-//            color: Colors.black12,
-//
-//            child: Text(
-//              'No',
-//              style: TextStyle(color: Colors.white, fontSize: 12),
-//            ),
-//            onPressed: ()async{
-//              Navigator.pop(context);
-//            },
-//          ),
-//
-//          RaisedButton(
-//            shape: RoundedRectangleBorder(
-//              borderRadius: BorderRadius.circular(30.0),
-//            ),
-//            color: Colors.redAccent,
-//
-//            child: Text(
-//              'Yes',
-//              style: TextStyle(color: Colors.white, fontSize: 14),
-//            ),
-//            onPressed: ()async{
-//              Navigator.pop(context);
-//            },
-//          ),
-//
-//        ],
-//      ),
-//    );
-//    },
-//    );
-//  }
 
   final AuthService _auth = AuthService();
 
@@ -105,6 +58,7 @@ class Home extends StatelessWidget {
           image: new AssetImage("images/city.jpg"),
       fit: BoxFit.cover,)
       ),
+
       child: Scaffold(
         backgroundColor: Colors.black.withOpacity(0.85),
 

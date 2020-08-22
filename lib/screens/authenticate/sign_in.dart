@@ -5,6 +5,7 @@ import 'package:rateandreview/shared/loading.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 
+
 class SignIn extends StatefulWidget {
   final Function toggleView;
   SignIn({this.toggleView});
@@ -237,6 +238,7 @@ class _SignInState extends State<SignIn> {
                                     }
                                     );
                                   }
+
                                 }
 
                               },

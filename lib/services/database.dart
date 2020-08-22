@@ -1,23 +1,26 @@
 //import 'dart:html';
 
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rateandreview/models/rate.dart';
 import 'package:rateandreview/models/user.dart';
 
 class DatabaseService{
-
+  
   final String uid;
   DatabaseService({this.uid});
 
   //collection reference
   final CollectionReference rateCollection = Firestore.instance.collection('rating');
 
-  Future updateUserData(int room, String name,String time) async{
-    return await rateCollection.document(uid).setData({
+  Future<void> updateUserData(int room, String name,String time) async{
+    return await rateCollection.document(uid).updateData({
       'Room':room,
       'Name':name,
       'Time':time,
-    });
+    },
+    );
   }
 
   //rate list from snapshot
@@ -30,7 +33,8 @@ class DatabaseService{
       );
     }).toList();
   }
-  //userData from snapshots
+//  userData from snapshots
+
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
     return UserData(
       uid: uid,

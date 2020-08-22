@@ -11,7 +11,7 @@ class rateList extends StatefulWidget {
 class _rateListState extends State<rateList> {
   @override
   Widget build(BuildContext context) {
-    final rate = Provider.of<List<Rate>>(context) ;
+    final rate = Provider.of<List<Rate>>(context) ??[] ;
 
     return ListView.builder(
       itemCount: rate.length,
