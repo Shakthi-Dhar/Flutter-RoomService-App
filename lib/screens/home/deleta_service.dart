@@ -16,7 +16,7 @@ class _delete_serviceState extends State<delete_service> {
   final _formKey = GlobalKey<FormState>();
   final List<String> time = ['Morning [9am to 12pm]','Afternoon [12pm to 4pm]','Evening [4pm to 7pm]','Night [7pm to 10pm]','Ticket Closed'];
 
-  String _currenttime = 'Time';
+  String _currenttime = 'Ticket Cancelled';
 
 
   bool loading = false;

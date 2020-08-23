@@ -9,6 +9,8 @@ class UserData{
   final String name;
   final String time;
   final String room;
+  final String category;
+  final String reg_no;
 
-  UserData({this.uid, this.name, this.time, this.room});
+  UserData({this.uid, this.name, this.time, this.room, this.category,this.reg_no});
 }

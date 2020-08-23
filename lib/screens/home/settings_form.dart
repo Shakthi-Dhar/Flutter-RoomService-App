@@ -20,6 +20,7 @@ class _SettingsFormState extends State<SettingsForm> {
   String _currentName = 'Name';
 //  String _currenttime ;
   int _currentroom = 0;
+  String _currentreg_no = '00---0000';
   bool loading = false;
 
   @override
@@ -69,7 +70,7 @@ class _SettingsFormState extends State<SettingsForm> {
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black),
                     ),
-                    icon: Icon(Icons.person, color: Colors.black,size: 30,),
+                    icon: Icon(Icons.person_outline, color: Colors.black,size: 30,),
                     hintText: 'Enter your Name here',
                     hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
 
@@ -82,42 +83,35 @@ class _SettingsFormState extends State<SettingsForm> {
 
                 SizedBox(height: 10,),
 
-//                DropdownButtonFormField(
-//                  validator: (val) => val.isEmpty ? 'Select the Time' : null,
-//                  decoration: InputDecoration(
-//
-//                    border: InputBorder.none,
-//                    fillColor: Colors.black,
-//                    enabledBorder: OutlineInputBorder(
-//                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
-//                      borderSide: BorderSide(color: Colors.black),
-//                    ),
-//                    focusedBorder: OutlineInputBorder(
-//                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
-//                      borderSide: BorderSide(color: Colors.black),
-//                    ),
-//                    icon: Icon(Icons.access_time, color: Colors.black,size: 30,),
-//                    hintText: 'Choose Timings',
-//                    hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
-//
-//                    errorStyle: TextStyle(
-//                      fontSize: 10.0,
-//                      color: Colors.black,
-//                    ),
-//                  ),
-//
-//                  items: time.map((timing){
-//                    return DropdownMenuItem(
-//                      value: timing,
-//                      child: Text('$timing'),
-//                    );
-//                  }).toList(),
-//
-//                  onChanged: (val) => setState(()=>_currenttime=val),
-//
-//                ),
+                TextFormField(
 
-//                SizedBox(height: 10,),
+                  validator: (val) => val.isEmpty ? 'Please enter your Reg_no' : null,
+                  onChanged: (val) => setState(()=>_currentreg_no= val),
+
+                  decoration: InputDecoration(
+
+                    border: InputBorder.none,
+                    fillColor: Colors.black,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    icon: Icon(Icons.person_pin, color: Colors.black,size: 30,),
+                    hintText: 'Enter Registration number',
+                    hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
+
+                    errorStyle: TextStyle(
+                      fontSize: 10.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 10,),
 
                 TextFormField(
 
@@ -136,7 +130,7 @@ class _SettingsFormState extends State<SettingsForm> {
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(color: Colors.black),
                     ),
-                    icon: Icon(Icons.home, color: Colors.black,size: 30,),
+                    icon: Icon(Icons.room, color: Colors.black,size: 30,),
                     hintText: 'Enter your Room Number             ',
                     hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
 
@@ -173,8 +167,7 @@ class _SettingsFormState extends State<SettingsForm> {
                         await DatabaseService(uid:  user.uid).updateUserData(
                            _currentroom ?? snapshot.data.room,
                            _currentName ?? snapshot.data.name,
-//                           _currenttime?? snapshot.data.time,
-
+                           _currentreg_no ?? snapshot.data.reg_no,
                            );
                       }
 

@@ -13,7 +13,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 
 
-
 class Home extends StatelessWidget {
 
 
@@ -48,6 +47,7 @@ class Home extends StatelessWidget {
         buttons: [],
       ).show();
     }
+
 
 
     return StreamProvider<List<Rate>>.value(

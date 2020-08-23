@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "818313454303",
-    "firebase_url": "https://room-service-project.firebaseio.com",
-    "project_id": "room-service-project",
-    "storage_bucket": "room-service-project.appspot.com"
+    "project_number": "60217405395",
+    "firebase_url": "https://hostel-service-app.firebaseio.com",
+    "project_id": "hostel-service-app",
+    "storage_bucket": "hostel-service-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:818313454303:android:a332b21c763dba15e93f6a",
+        "mobilesdk_app_id": "1:60217405395:android:ed3326b572274404908926",
         "android_client_info": {
           "package_name": "com.example.rateandreview"
         }
       },
       "oauth_client": [
         {
-          "client_id": "818313454303-v5mhg0107i6pojmqdisk0ns8q8k180pe.apps.googleusercontent.com",
+          "client_id": "60217405395-o3ntmm9jbgvsg6ppvquanph9blb5idul.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAsHzYOvnPlW81CGod0nS_fp345JznKBMc"
+          "current_key": "AIzaSyBhdXxF52Wes8ELpXNfQi_K0O49uVzO6AQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "818313454303-v5mhg0107i6pojmqdisk0ns8q8k180pe.apps.googleusercontent.com",
+              "client_id": "60217405395-o3ntmm9jbgvsg6ppvquanph9blb5idul.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

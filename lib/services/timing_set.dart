@@ -29,6 +29,8 @@ class DatabaseService{
           time: doc.data['Time'] ?? 'Ticket Cancelled',
           name: doc.data['Name'] ?? 'New Member',
           room: doc.data['Room'] ?? 0,
+        reg_no: doc.data['Reg_no']??'00---0000',
+        category: doc.data['Category']??'Student',
       );
     }).toList();
   }
@@ -39,6 +41,8 @@ class DatabaseService{
       name: snapshot.data['Name'],
       time: snapshot.data['Time'],
       room: snapshot.data['Room'],
+      reg_no: snapshot.data['Reg_no'],
+      category: snapshot.data['Category'],
     );
   }
 
